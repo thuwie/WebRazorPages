@@ -1,0 +1,40 @@
+﻿@page
+@using WebRazorPages.Models
+@using WebRazorPages.Services
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+@* @{
+    var product1 = new Product() { Name = "Iphone 14 Pro", Description = "Dien thoai cua Apple", Price = 1000 };
+    var product2 = new Product() { Name = "Iphone 14 Pro", Description = "Dien thoai cua Apple", Price = 1000 };
+    var product3 = new Product() { Name = "Iphone 14 Pro", Description = "Dien thoai cua Apple", Price = 1000 };
+}
+<div class="row">
+    <div class="col">
+        <partial name="_ProductItem" model="product1"/>
+    </div>
+    <div class="col">
+        @await Html.PartialAsync("_ProductItem", product2)
+    </div>
+    <div class="col">
+        @{
+            await Html.RenderPartialAsync("_ProductItem", product3);
+        }
+    </div>
+</div> *@
+
+@{
+    ViewData["title"] = "Home Page";
+}
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="#"></a></p>
+</div>
+@await Html.PartialAsync("_Message");
+@await Component.InvokeAsync("ProductBox");
