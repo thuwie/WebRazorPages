@@ -1,0 +1,32 @@
+﻿@page
+@model WebRazorPages.Pages.ProductPageModel
+@{
+    var product = Model.product;
+    var products = Model.products;
+}
+<h1>@ViewData["Title"]</h1>
+@if (product!=null)
+{
+    <h2>@product.Name</h2>
+    <p>Mô tả: @product.Description</p>
+    <p>Giá: @product.Price</p>
+    <a asp-page="ProductPage" asp-route-id="">Danh sách sản phẩm</a>
+}
+else
+{
+    <ul class="list-group">
+        @foreach(var item in products)
+        {
+            <li class="list-group-item">
+                <a asp-page="ProductPage" asp-route-id="@item.Id">@item.Name</a>
+            </li>
+        }
+    </ul>
+    <hr />
+    <a class="btn btn-primary" asp-page="ProductPage" asp-page-handler="RemoveAll">
+        Xóa tất cả
+    </a>
+    <a class="btn btn-primary" asp-page="ProductPage" asp-page-handler="LoadAll">
+        Thêm sản phẩm
+    </a>
+}

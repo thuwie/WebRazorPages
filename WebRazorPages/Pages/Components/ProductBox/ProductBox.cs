@@ -12,14 +12,18 @@ namespace WebRazorPages.Pages.Components.ProductBox
         //    new Product(){Name="Samsung Galaxy", Description="Dien thoai cua SamSung", Price=550},
         //    new Product(){Name="Sony Xperis", Description="Dien thoai cua Sony", Price=300},
         //};
-        List<Product> products = null;
+        private readonly ProductService _productService;
         public ProductBox(ProductService productService)
         {
-            products = productService.GetProducts();
+            _productService = productService;
         }
-        public IViewComponentResult Invoke()
+        public IViewComponentResult Invoke(string searchTerm = "")
         {
-            return View<List<Product>>(products);
+            // Gọi hàm Search đã viết trong Service
+            var filteredProducts = _productService.Search(searchTerm);
+
+            // Trình diễn dữ liệu ra View (Default.cshtml)
+            return View(filteredProducts);
         }
     }
 }

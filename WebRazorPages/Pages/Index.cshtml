@@ -29,12 +29,4 @@
     </div>
 </div> *@
 
-@{
-    ViewData["title"] = "Home Page";
-}
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="#"></a></p>
-</div>
-@await Html.PartialAsync("_Message");
 @await Component.InvokeAsync("ProductBox");
